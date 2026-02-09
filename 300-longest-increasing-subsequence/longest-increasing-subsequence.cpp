@@ -3,7 +3,7 @@ public:
     int n;
     vector<vector<int>> t;
     int solve(vector<int>& nums, int i, int prev){
-        if(i >= nums.size())
+        if(i >= n)
             return 0;
 
         if(prev!= -1 && t[i][prev] != -1)
@@ -17,12 +17,12 @@ public:
 
         if(prev != -1)
             t[i][prev] = max(take, skip);
-            
+
         return max(take, skip);
     }
     int lengthOfLIS(vector<int>& nums) {
         n = nums.size();
-        t.assign(n, vector<int>(n + 1, -1));
+        t.assign(n+1, vector<int>(n + 1, -1));
         return solve(nums, 0, -1);
     }
 };
