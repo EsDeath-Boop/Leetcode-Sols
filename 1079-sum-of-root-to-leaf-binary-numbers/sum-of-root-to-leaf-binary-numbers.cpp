@@ -1,5 +1,5 @@
 /**
- * Definition for a binary tree node.
+ * Definition for a binary tree root.
  * struct TreeNode {
  *     int val;
  *     TreeNode *left;
@@ -22,24 +22,24 @@ public:
     //     }
     //     return result;
     // }
-    void dfs(TreeNode* node, int path, int& result) {
+    void dfs(TreeNode* root, int path, int& result) {
 
-        if(!node)
+        if(!root)
             return;
         
-        path = (path << 1) + node->val;
+        path = (path << 1) + root->val;
 
-        if (!node->left && !node->right) {
+        if (!root->left && !root->right) {
             result += path;
             return;
         }
 
-        if (node->left) {
-            dfs(node->left, path, result);
+        if (root->left) {
+            dfs(root->left, path, result);
         }
 
-        if (node->right) {
-            dfs(node->right, path, result);
+        if (root->right) {
+            dfs(root->right, path, result);
         }
     }
     int sumRootToLeaf(TreeNode* root) {
