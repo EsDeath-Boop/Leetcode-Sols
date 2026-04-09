@@ -22,6 +22,8 @@ public:
             int x = cord.first;
             int y = cord.second;
 
+            if(x == m-1 && y == n-1) return diff;
+            
             for(auto &dir : dirs){
                 int x_ = x + dir[0];
                 int y_ = y + dir[1];
