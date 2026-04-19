@@ -4,15 +4,27 @@ public:
         int n = nums1.size();
         int m = nums2.size();
 
-        int i = 0, j = 0;
         int ans = 0;
+        int temp = 0;
 
-        while(i < n && j < m){
-            if(nums1[i] <= nums2[j]){
-                ans = max(ans, j - i);
-                j++;
-            }else
-                i++;
+        for(int i = 0; i < n; i++){
+            int low = i;
+            int high = m - 1;
+
+            while(low <= high){
+                int mid = low + (high - low) / 2;
+
+                if(nums1[i] <= nums2[mid]){
+                    temp = mid;
+                    low = mid + 1;
+                }else{
+                    high = mid - 1;
+                }
+            }
+
+            if(temp >= i){
+                ans = max(ans, temp - i);
+            }
         }
         return ans;
     }
