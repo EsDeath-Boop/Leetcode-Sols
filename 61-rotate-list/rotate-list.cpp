@@ -20,14 +20,14 @@ public:
         k%=len;
         if(k==0) return head; 
 
-        tail->next=head; // circular
+        tail->next=head;
 
         int steps=len-k;
         ListNode* newtail=head;
         for(int i=1;i<steps;i++) newtail=newtail->next; 
 
         ListNode* newhead=newtail->next; 
-        newtail->next=NULL; // break
+        newtail->next=NULL; 
 
         return newhead;
     }
