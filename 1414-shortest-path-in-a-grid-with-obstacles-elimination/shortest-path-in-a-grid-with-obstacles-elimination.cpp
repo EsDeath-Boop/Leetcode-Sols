@@ -12,7 +12,7 @@ public:
 
         int i = 0, j = 0;
         vector<vector<vector<bool>>> vis(n+1, vector<vector<bool>> (m+1, vector<bool> (m*n+1, false)));
-        // vis[0][0][k] = true;
+        vis[0][0][k] = true;
         int steps = 0;
 
         while(!q.empty()){
