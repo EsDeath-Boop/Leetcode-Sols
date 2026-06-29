@@ -3,21 +3,34 @@ public:
     int firstMissingPositive(vector<int>& nums) {
         int n = nums.size();
 
-        map<int ,int> mp;
+        bool has1 = false;
 
-        for(auto &x : nums){
-            mp[x]++;
+        for(int i = 0; i < n; i++){
+            if(nums[i] == 1)
+                has1 = true;
+
+            if(nums[i] <= 0 || nums[i] > n)
+                nums[i] = 1;
         }
 
-        int MAX = *max_element(nums.begin(), nums.end());
+        if(has1 == false)
+            return 1;
 
-        int ans = 0;
+        for(int i = 0; i < n; i++){
+            int num = abs(nums[i]);
+            int idx = num - 1;
 
-        for(int i = 1; ; i++){
-            if(mp.find(i) == mp.end())
-                return i;
+            if(nums[idx] < 0)
+                continue;
+            
+            nums[idx] *= -1;
         }
-        return MAX+1;
-        
+
+        for(int i = 0; i < n; i++){
+            if(nums[i] > 0)
+                return i+1;
+        }
+
+        return n+1;
     }
 };
